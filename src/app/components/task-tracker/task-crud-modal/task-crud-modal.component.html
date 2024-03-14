@@ -1,0 +1,63 @@
+<div class="form">
+  <div mat-dialog-title class="formTitle">
+    <h4>{{ data.method }}</h4>
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="taskForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Заголовок</mat-label>
+        <input type="text" matInput required formControlName="header">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Название</mat-label>
+        <input type="text" matInput required formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="deadline">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Приоритет</mat-label>
+        <input type="text" matInput required formControlName="priority">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Статус</mat-label>
+        <mat-select formControlName="status" required>
+          @for (status of statuses; track status){
+            <mat-option value="{{status}}">{{ status }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <button type="button" (click)="addContractors()" class="setting--btn" mat-button>+ Добавить исполнителя</button>
+
+      <ng-container *ngFor="let user of formTasks; let i = index" formArrayName="contractors">
+        <ng-container [formGroupName]="i">
+          <mat-form-field appearance="outline" >
+            <mat-label>Исполнитель</mat-label>
+            <div class="formTitle">
+              <input type="text" matInput required formControlName="user">
+              <button type="button" (click)="deleteContractors(i)" class="setting--btn" mat-button [disabled]="formTasks.length<2">-</button>
+            </div>
+          </mat-form-field>
+
+
+        </ng-container>
+      </ng-container>
+
+    </form>
+
+  </mat-dialog-content>
+  <div mat-dialog-actions class="buttons">
+    <button mat-button color="primary" mat-dialog-close type="button" (click)="cancel()" class="success">Отмена</button>
+    <button mat-raised-button color="primary" (click)="save()" type="button" [disabled]="taskForm.invalid"
+            class="success">
+      <span>Сохранить</span>
+    </button>
+  </div>
+
+</div>
+

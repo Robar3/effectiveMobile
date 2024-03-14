@@ -1,0 +1,31 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.success{
+  border-radius: 50px;
+}
+.flex{
+  display: flex;
+}
+.formTitle{
+  display: flex;
+  width: 100%;
+}
+mat-dialog-content{
+  width: 100%;
+}
+mat-form-field{
+  width: 100%;
+  border-radius: 4px;
+}
+.buttons{
+  padding: 16px 22px 16px 22px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}

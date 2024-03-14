@@ -1,0 +1,52 @@
+<div class="top-menu">
+  <a [routerLink]="['']" >Таск трекер</a>
+  <a [routerLink]="['table']" >Таблица задач</a>
+  <div class="top-menu" >
+    <p>Добавить колонку</p>
+    <button (click)="addColumn()" class="button">
+      <img ngSrc="./assets/add.svg" alt="add" height="36" width="36" priority="true">
+    </button>
+  </div>
+
+</div>
+<div cdkDropListGroup class="layout">
+  @for (status of statuses; track status){
+    <div class="example-container">
+      <div class="header">
+
+        <h2>{{ status }}</h2>
+        <div class="item-buttons">
+          <button (click)="addTask(status)" class="button">
+            <img ngSrc="./assets/add.svg" alt="add" height="36" width="36" priority="true">
+          </button>
+          <button (click)="deleteColumn(status)" class="button">
+            <img ngSrc="./assets/delete.svg" alt="delete" height="36" width="36">
+          </button>
+        </div>
+
+      </div>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="tasks[status]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event,status)">
+        @for (item of tasks[status]; track item) {
+          <div class="header">
+            <div class="example-box" cdkDrag>{{item.name}}</div>
+            <div class="header item-buttons">
+              <button (click)="deleteTask(item)" class="button">
+                <img src="./assets/delete.svg" alt="delete">
+              </button>
+              <button class="button" (click)="refactorTask(item)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu" ></mat-icon>
+              </button>
+            </div>
+
+          </div>
+
+        }
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,11 @@
+<div class="deleteContainer">
+  <h4>Удаление строк</h4>
+  <p>Удалить выбранные строки ({{ data }})?</p>
+  <div mat-dialog-actions class="buttons">
+    <button mat-button color="primary" mat-dialog-close type="button" class="success">Отмена</button>
+    <button mat-raised-button color="primary" (click)="delete()" type="button" class="success">
+      <span>Удалить</span>
+    </button>
+  </div>
+</div>
+
