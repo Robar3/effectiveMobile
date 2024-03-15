@@ -1,4 +1,23 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav bcg" mode="side">
+    <div class="box">
+      <ul>
+        <li><a [routerLink]="['']">Таск трекер</a></li>
+        <li><a [routerLink]="['table']">Таблица задач</a></li>
+      </ul>
+    </div>
 
-<router-outlet />
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Меню
+    </button>
+    <router-outlet/>
+
+  </div>
+
+</mat-drawer-container>
+
 
 

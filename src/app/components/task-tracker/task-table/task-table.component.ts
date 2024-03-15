@@ -1,11 +1,9 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   CdkDrag,
   CdkDragDrop,
   CdkDropList,
   CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem
 } from "@angular/cdk/drag-drop";
 import {RouterLink} from "@angular/router";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
@@ -39,7 +37,7 @@ export class TaskTableComponent implements OnInit {
   statuses: Array<string> = [];
   tasks: Tasks = {};
 
-  constructor(public dialog: MatDialog, private store$: Store, private cdr: ChangeDetectorRef) {
+  constructor(public dialog: MatDialog, private store$: Store) {
   }
 
   ngOnInit(): void {

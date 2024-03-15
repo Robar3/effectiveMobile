@@ -1,0 +1,15 @@
+services:
+  untitled5:
+    container_name: untitled5container
+    build: .
+    image: untitled5
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge

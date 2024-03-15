@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
-import {Tasks} from "./interfaces/task-interfaces";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +33,6 @@ export class TaskService {
   }
 
   getRandomId() {
-    return Math.floor((Math.random()*9999)+1);
+    return Math.floor((Math.random()*99)+1);
   }
 }
